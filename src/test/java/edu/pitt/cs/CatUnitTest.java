@@ -32,6 +32,7 @@ public class CatUnitTest {
 		// Passing InstanceType.MOCK as the first parameter will create a mock cat using Mockito.
 		// Which type is the correct choice for this unit test?  I'll leave it up to you.  The answer is in the Unit Testing Part 2 lecture. :)
 		// TODO: Fill in
+		c = Cat.createInstance(InstanceType.IMPL, 1, "Jennyanydots");
 	}
 
 	@After
@@ -53,6 +54,11 @@ public class CatUnitTest {
 	@Test
 	public void testGetId() {
 		// TODO: Fill in
+		// Execution
+		int test = c.getId();
+
+		// Postcondition check
+		assertEquals(1, test);
 	}
 
 	/**
@@ -67,6 +73,11 @@ public class CatUnitTest {
 	@Test
 	public void testGetName() {
 		// TODO: Fill in
+		// Execution
+		String test = c.getName();
+
+		// Postcondition check
+		assertEquals("Jennyanydots", test);
 	}
 
 	/**
@@ -81,6 +92,11 @@ public class CatUnitTest {
 	@Test
 	public void testGetRented() {
 		// TODO: Fill in
+		// Execution
+		boolean test = c.getRented();
+
+		// Postcondition check
+		assertEquals(false, test);
 	}
 
 	/**
@@ -95,6 +111,11 @@ public class CatUnitTest {
 	@Test
 	public void testToString() {
 		// TODO: Fill in
+		// Execution
+		String test = c.toString();
+
+		// Postcondition check
+		assertEquals("ID 1. Jennyanydots", test);
 	}
 
 	/**
@@ -110,6 +131,12 @@ public class CatUnitTest {
 	@Test
 	public void testRentCat() {
 		// TODO: Fill in
+		// Execution
+		c.rentCat();
+		boolean test = c.getRented();
+
+		// Postcondition check
+		assertEquals(true, test);
 	}
 
 	/**
@@ -126,6 +153,15 @@ public class CatUnitTest {
 	@Test
 	public void testReturnCat() {
 		// TODO: Fill in
+		// Precondition
+		c.rentCat();
+
+		// Execution
+		c.returnCat();
+		boolean test = c.getRented();
+
+		// Postcondition check
+		assertEquals(false, test);
 	}
 
 	/**
@@ -141,6 +177,12 @@ public class CatUnitTest {
 	@Test
 	public void testRenameCat() {
 		// TODO: Fill in
+		// Execution
+		c.renameCat("Garfield");
+
+		// Postconditions check
+		assertEquals("Garfield", c.getName());
+		assertEquals("ID 1. Garfield", c.toString());
 	}
 
 }
